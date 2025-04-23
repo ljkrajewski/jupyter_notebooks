@@ -1,0 +1,48 @@
+Manual Install Method from my last Youtube Video: https://youtu.be/GywyMij88rY
+
+1. Download and extract the FramePack portable version from:
+   https://github.com/lllyasviel/FramePack
+ 
+2. After extraction, you need to determine your cuda version (you should have already installed the 12.6 from here: https://developer.nvidia.com/cuda-12-6-0-download-archive or 12.8).
+
+in a cmd window use the command:
+
+nvcc --version
+
+3. Once you have the cuda version, go to https://github.com/woct0rdho/SageAttention/releases
+and dl the corresponding file (python 3.10 version)
+
+4. Go to https://github.com/woct0rdho/triton-windows/releases/v3.0.0-windows.post1/
+and dl the python_3.10.11_include_libs.zip   archive.
+
+5. Put the two files inside the framepack_cu126_torch26\system\python   folder and extract the content of the python_3.10.11_include_libs.zip archive inside the folder
+
+6. Click on the folder path and use the commands:
+python.exe -s -m pip install triton-windows   ---> for installing triton
+python.exe -s -m pip install sageattention-2.1.1+cu128torch2.7.0-cp310-cp310-win_amd64.whl    ---> replace sageattention-2.1.1+cu128torch2.7.0-cp310-cp310-win_amd64.whl by the name of the file you have dl for your cuda version
+
+7. Go back to the framepack_cu126_torch26   folder and run first the update.bat file to update it to the latest version and then launch the run.bat file.
+
+ 
+
+## RunPod Installation
+ 
+1. Create account at: https://bit.ly/runpodAi
+2. Choose a 24GB VRAM GPU with the pytorch 2.1 template
+3. Access port 8888
+4. clone the repo
+git clone https://github.com/lllyasviel/FramePack
+go inside the FramePack folder
+cd FramePack
+5. Create a python env
+python -m venv venv
+then activate it
+source venv/bin/activate
+6. Install all the dependencies
+pip install --upgrade pip
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+pip install -r requirements.txt
+pip install triton
+pip install sageattention==1.0.6
+7. Then launch it with the --share argument
+python demo_gradio.py --share
