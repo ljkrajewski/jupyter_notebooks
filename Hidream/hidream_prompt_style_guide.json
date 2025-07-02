@@ -1,0 +1,68 @@
+{
+  "HiDreamPromptStyleGuide": {
+    "Language": {
+      "Requirement": "Must be in English",
+      "Preference": "Descriptive natural language preferred over keywords",
+      "Example": "Use full sentences like 'A cat holding a sign that says HiDream.ai, in a sunny park' instead of 'cat, sign, park'"
+    },
+    "Structure": {
+      "Order": "Subject + Actions → Setting → Style → Details",
+      "Description": "Start with the main subject and actions, followed by the setting, desired style, and specific details",
+      "Example": "A cat holding a sign, in a park, cartoon style, vibrant colors"
+    },
+    "TokenLimit": {
+      "Optimal": "Up to 128 tokens (approximately 10–25 words)",
+      "Maximum": "Can handle up to 248 tokens",
+      "Note": "Longer prompts may dilute key details; aim for conciseness"
+    },
+    "EncoderSpecificPrompting": {
+      "Description": "Separate prompts for different encoders in supported interfaces (e.g., Draw Things)",
+      "Encoders": [
+        {
+          "Name": "CLIP-L (ViT-L)",
+          "Purpose": "Focuses on fine-grained visual details",
+          "Example": "Curly, cream-colored fur, bold red stitching on a bandana"
+        },
+        {
+          "Name": "OpenCLIP-G (ViT-bigG)",
+          "Purpose": "Captures global scene context (environment, spatial relationships)",
+          "Example": "Sunny park with lush trees, soft sunlight"
+        },
+        {
+          "Name": "T5-XXL",
+          "Purpose": "Handles complex language and textual elements (e.g., text on objects)",
+          "Example": "Bandana with 'I ♥ HiDream', sign with clear text"
+        },
+        {
+          "Name": "LLaMA 3.1 8B",
+          "Purpose": "Processes the main prompt internally, heavily weighted",
+          "Note": "Typically handles the primary prompt"
+        }
+      ]
+    },
+    "NegativePrompts": {
+      "Usage": "Effective for hidream-i1-full; use 'Zero Negative Prompt' for faster versions (hidream-i1-fast, hidream-i1-dev)",
+      "ExampleForFull": "blurry, low detail, distorted",
+      "NoteForFastDev": "Enable 'Zero Negative Prompt' to speed up generation"
+    },
+    "AspectRatio": {
+      "Recommendation": "Use taller ratios (2:3, 5:8, 9:16, 9:21) for full-body shots; mention details like 'shoes' for wide ratios",
+      "Example": "A woman with shoes stands in an empty room, full body shot (use 2:3 ratio)"
+    },
+    "StyleKeywords": {
+      "Purpose": "Guide the aesthetic of the generated image",
+      "Examples": ["photorealistic", "cartoon", "painting", "cyberpunk", "Studio Ghibli style"],
+      "Note": "Include specific style keywords to align with desired output"
+    },
+    "CommonIssues": {
+      "PotentialProblems": "Occasional errors with number of digits or limbs",
+      "Solution": "Refine prompts iteratively, as small changes do not reset the entire image",
+      "Example": "If digits are incorrect, adjust prompt to specify 'five fingers per hand'"
+    },
+    "AdditionalNotes": {
+      "PromptWeighting": "Not supported; avoid using formats like (Prompt: 1.5)",
+      "IterativeRefinement": "Experiment with small changes to refine outputs without resetting the image",
+      "CommunityResources": "Leverage Reddit discussions and Medium articles for practical tips and examples"
+    }
+  }
+}
